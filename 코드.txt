@@ -1,0 +1,135 @@
+import xml.etree.ElementTree as ET
+import openpyxl
+
+
+#엑셀 파일 열기
+filepath = "C:/Users/장휘준/PycharmProjects/DataScienceExercise7/data.xlsx"
+wb = openpyxl.Workbook()
+wb_ws = wb.active
+
+
+
+"""
+04ad737a6336 작업
+"""
+
+
+#시트 이름 변경
+wb_ws.title = '04ad737a6336'
+#헤더 이름 변경
+wb_ws.append(['fileName', 'PID', 'Name', 'Parent_PID'])
+
+
+#파싱할 파일 불러오기
+tree = ET.parse('04ad737a6336.xml')
+#루트 디렉토리 설정
+root= tree.getroot()
+
+
+for i in range(2, 279):
+    print("FileName : 04ad737a6336")
+    print("Number : ", i)
+    print('tag :', root[1][i][1][0][1].tag, 'attrib :', root[1][i][1][0][1].attrib, 'text : ', root[1][i][1][0][1].text)
+    print('tag :', root[1][i][1][0][2].tag, 'attrib :', root[1][i][1][0][2].attrib, 'text : ', root[1][i][1][0][2].text)
+    print('tag :', root[1][i][1][0][3].tag, 'attrib :', root[1][i][1][0][3].attrib, 'text : ', root[1][i][1][0][3].text)
+
+    wb_ws.append(['04ad737a6336.xml', root[1][i][1][0][1].text, root[1][i][1][0][2].text, root[1][i][1][0][3].text])
+
+    print("next ---------\n\n\n")
+
+#데이터프레임 엑셀파일로 저장
+wb.save(filepath)
+
+
+"""
+1f8feaadbc49 작업
+총 
+"""
+
+#시트 이름 변경 및 헤더 추가
+wb.create_sheet('1f8feaadbc49')
+wb_ws = wb['1f8feaadbc49']
+wb_ws.append(['fileName', 'PID', 'Name', 'Parent_PID'])
+
+#파싱할 파일 불러오기
+tree = ET.parse('1f8feaadbc49.xml')
+#루트 디렉토리 설정
+root= tree.getroot()
+
+
+for i in range(2, 55):
+    print("FileName : 1f8feaadbc49")
+    print("Number : ", i)
+    print('tag :', root[1][i][1][0][1].tag, 'attrib :', root[1][i][1][0][1].attrib, 'text : ', root[1][i][1][0][1].text)
+    print('tag :', root[1][i][1][0][2].tag, 'attrib :', root[1][i][1][0][2].attrib, 'text : ', root[1][i][1][0][2].text)
+    print('tag :', root[1][i][1][0][3].tag, 'attrib :', root[1][i][1][0][3].attrib, 'text : ', root[1][i][1][0][3].text)
+
+    wb_ws.append(['1f8feaadbc49.xml', root[1][i][1][0][1].text, root[1][i][1][0][2].text, root[1][i][1][0][3].text])
+
+    print("next ---------\n\n\n")
+
+#데이터프레임 엑셀파일로 저장
+wb.save(filepath)
+
+
+"""
+2c5729e17b64 작업
+"""
+
+
+#시트 이름 변경 및 헤더 추가
+wb.create_sheet('2c5729e17b64')
+wb_ws = wb['2c5729e17b64']
+wb_ws.append(['fileName', 'PID', 'Name', 'Parent_PID'])
+
+
+#파싱할 파일 불러오기
+tree = ET.parse('2c5729e17b64.xml')
+#루트 디렉토리 설정
+root= tree.getroot()
+
+
+for i in range(4, 10):
+    print("FileName : 2c5729e17b64")
+    print("Number : ", i-2)
+    print('tag :', root[1][i][1][0][1].tag, 'attrib :', root[1][i][1][0][1].attrib, 'text : ', root[1][i][1][0][1].text)
+    print('tag :', root[1][i][1][0][2].tag, 'attrib :', root[1][i][1][0][2].attrib, 'text : ', root[1][i][1][0][2].text)
+    print('tag :', root[1][i][1][0][3].tag, 'attrib :', root[1][i][1][0][3].attrib, 'text : ', root[1][i][1][0][3].text)
+
+    wb_ws.append(['04ad737a6336.xml', root[1][i][1][0][1].text, root[1][i][1][0][2].text, root[1][i][1][0][3].text])
+
+    print("next ---------\n\n\n")
+
+
+------------------------------------------------------------------------------------------------------------------
+
+from pprint import pprint
+
+# python-stix
+from stix.core import STIXPackage
+
+def main():
+    FILENAME = 'Globeimposter-Ransomware-analysis.xml'
+    # Parse input file
+    stix_package = STIXPackage.from_xml(FILENAME)
+    # Convert STIXPackage to a Python dictionary via the to_dict() method.
+    stix_dict = stix_package.to_dict()
+    # Print the dictionary!
+    # Convert the first STIXPackage dictionary into another STIXPackage via
+    # the from_dict() method.
+    stix_package_two = STIXPackage.from_dict(stix_dict)
+
+    # Serialize the new STIXPackage object to XML
+    xml = stix_package_two.to_xml()
+
+    # Print the XML!
+    print(stix_dict.keys())
+    print(stix_dict["id"])
+    print(stix_dict['observables']['observables'][0])
+
+
+if __name__ == '__main__':
+    main()
+
+#데이터프레임 엑셀파일로 저장
+wb.save(filepath)
